@@ -4,6 +4,7 @@
     "editor.tabSize": 4,
     "cSpell.words": [
         "cmake",
+        "codecov",
         "GCOVR"
     ]
 }
