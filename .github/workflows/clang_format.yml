@@ -4,22 +4,9 @@ on:
   push:
     branches:
       - main
-    push:
-      - "**/*.h"
-      - "**/*.hpp"
-      - "**/*.c"
-      - "**/*.cc"
-      - "**/*.cpp"
   pull_request:
-    types: [opened, synchronize, reopened]
     branches:
       - main
-    path:
-      - "**/*.h"
-      - "**/*.hpp"
-      - "**/*.c"
-      - "**/*.cc"
-      - "**/*.cpp"
 
 jobs:
   clang-format:
@@ -32,5 +19,6 @@ jobs:
       - uses: DoozyX/clang-format-lint-action@v0.13
         with:
           source: "."
+          exclude: "./build"
           extensions: "h,hpp,c,cc,cpp"
           clangFormatVersion: 13
