@@ -7,4 +7,4 @@ std::string HelloWorld() {
     return "Hello World";
 }
 
-#endif
+#endif  // HELLO_WORLD_HPP
