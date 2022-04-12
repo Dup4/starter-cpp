@@ -8,9 +8,11 @@ debug:
 	cmake --build build -j
 
 unittest:
+	rm -rf ./build/test
 	./build/bin/unit_test
 
 benchmark:
+	run -rf ./build/test
 	./build/bin/unit_benchmark
 
 .PHONY: clean
