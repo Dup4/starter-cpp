@@ -54,11 +54,9 @@ jobs:
 
       - name: Upload coverage to CodeCov
         if: contains(matrix.os, 'ubuntu')
-        uses: codecov/codecov-action@v2.1.0
+        uses: codecov/codecov-action@v2
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
           files: .coverage/coverage.xml
-          fail_ci_if_error: false
           verbose: true
 
   benchmark:
