@@ -18,7 +18,7 @@ FetchContent_Declare(
     snapshot
     QUIET
     GIT_REPOSITORY https://github.com/Dup4/snapshot-cpp.git
-    GIT_TAG v0.1.4
+    GIT_TAG v0.1.5
 )
 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
