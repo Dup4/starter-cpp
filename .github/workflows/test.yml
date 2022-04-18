@@ -35,7 +35,7 @@ jobs:
         run: |
           export CC=clang
           export CXX=clang++
-          make
+          make tests
 
       - name: Unit Test
         run: |
@@ -86,7 +86,7 @@ jobs:
         run: |
           export CC=clang
           export CXX=clang++
-          make
+          make tests
 
       - name: Benchmark
         run: |

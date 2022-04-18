@@ -1,3 +1,5 @@
+option(starter_cpp_build_tests "Build all of snapshot's own tests." OFF)
+
 cmake_minimum_required(VERSION 3.14)
 
 project(starter-cpp VERSION 0.0.0)
@@ -17,6 +19,13 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/include/
 )
 
+add_library(starter-cpp INTERFACE)
+target_include_directories(starter-cpp INTERFACE ${PROJECT_SOURCE_DIR}/include/)
+
+if (starter_cpp_build_tests)
+
 enable_testing()
 
 add_subdirectory(test/)
+
+endif()

@@ -14,15 +14,23 @@ FetchContent_Declare(
     GIT_TAG v1.6.0
 )
 
+FetchContent_Declare(
+    snapshot
+    QUIET
+    GIT_REPOSITORY https://github.com/Dup4/snapshot-cpp.git
+    GIT_TAG v0.1.4
+)
+
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 set(BUILD_GMOCK ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(gtest gbenchmark)
+FetchContent_MakeAvailable(gtest gbenchmark snapshot)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wextra")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
 
 add_executable(
@@ -33,6 +41,7 @@ add_executable(
 target_link_libraries(
     unit_test
 PRIVATE
+    snapshot
     gtest_main
 )
 
@@ -54,6 +63,7 @@ add_executable(
 target_link_libraries(
     unit_benchmark
 PRIVATE
+    snapshot
     benchmark::benchmark
     benchmark::benchmark_main
 )
