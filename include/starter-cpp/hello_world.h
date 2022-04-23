@@ -3,7 +3,7 @@
 
 #include <string>
 
-std::string HelloWorld() {
+inline std::string HelloWorld() {
     return "Hello World";
 }
 
