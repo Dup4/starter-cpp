@@ -6,6 +6,12 @@
     "clangd.arguments": [
         "--compile-commands-dir=./build",
     ],
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true,
+        "rules": {
+            "comment": "#505050",
+        }
+    },
     "cSpell.words": [
         "cmake",
         "codecov",
