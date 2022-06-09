@@ -21,4 +21,4 @@ jobs:
           source: "."
           exclude: "./build"
           extensions: "h,hpp,c,cc,cpp"
-          clangFormatVersion: 13
+          clangFormatVersion: 14
