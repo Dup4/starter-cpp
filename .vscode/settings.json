@@ -20,7 +20,7 @@
     "editor.semanticTokenColorCustomizations": {
         "enabled": true,
         "rules": {
-            "comment": "#505050",
+            "comment": "#8c8c8c",
         }
     },
     "cSpell.words": [
