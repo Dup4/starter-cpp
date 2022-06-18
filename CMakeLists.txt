@@ -1,4 +1,4 @@
-option(starter_cpp_build_tests "Build all of snapshot's own tests." OFF)
+option(starter_cpp_build_tests "Build all of starter's own tests." OFF)
 
 cmake_minimum_required(VERSION 3.14)
 
