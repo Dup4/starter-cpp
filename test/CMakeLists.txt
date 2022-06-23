@@ -43,6 +43,7 @@ target_link_libraries(
     unit_test
 PRIVATE
     snapshot
+    gtest
     gtest_main
 )
 
