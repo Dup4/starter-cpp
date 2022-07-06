@@ -1,9 +1,11 @@
 Language: Cpp
 BasedOnStyle: Google
 IndentWidth: 4
+ColumnLimit: 120
+UseTab: Never
 
 AccessModifierOffset: -4
-AlignAfterOpenBracket: DontAlign
+AlignAfterOpenBracket: Align
 
 AllowShortBlocksOnASingleLine: Never
 AllowShortFunctionsOnASingleLine: Empty
@@ -12,12 +14,11 @@ AllowShortLambdasOnASingleLine: Empty
 
 BinPackArguments: false
 BinPackParameters: false
-AllowAllArgumentsOnNextLine: false
 
 AlwaysBreakTemplateDeclarations: Yes
 BreakBeforeTernaryOperators: true
 BreakStringLiterals: false
-ColumnLimit: 120
+
 CompactNamespaces: false
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
 ConstructorInitializerIndentWidth: 8
@@ -31,4 +32,3 @@ IndentGotoLabels: false
 PointerAlignment: Left
 ReflowComments: true
 SortUsingDeclarations: true
-UseTab: Never
