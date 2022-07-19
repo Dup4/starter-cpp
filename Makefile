@@ -20,7 +20,7 @@ build_tests:
 	-DCMAKE_BUILD_TYPE=Release \
 	-DBENCHMARK_ENABLE_TESTING=OFF \
 	-DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
-	-Dstarter_cpp_build_tests=ON
+	-DSTARTER_CPP_BUILD_TESTS=ON
 	cmake --build build -j
 
 run_unittest:

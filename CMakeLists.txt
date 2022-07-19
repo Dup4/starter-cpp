@@ -1,4 +1,4 @@
-option(starter_cpp_build_tests "Build all of starter-cpp's own tests." OFF)
+option(STARTER_CPP_BUILD_TESTS "Build all of starter-cpp's own tests." OFF)
 
 cmake_minimum_required(VERSION 3.14)
 
@@ -22,7 +22,7 @@ include_directories(
 add_library(starter-cpp INTERFACE)
 target_include_directories(starter-cpp INTERFACE ${PROJECT_SOURCE_DIR}/include/)
 
-if (starter_cpp_build_tests)
+if (STARTER_CPP_BUILD_TESTS)
 
 enable_testing()
 
