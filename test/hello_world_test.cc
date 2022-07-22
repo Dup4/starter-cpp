@@ -1,6 +1,5 @@
-#include <gtest/gtest.h>
-
-#include "starter-cpp/hello_world.h"
+#include "gtest/gtest.h"
+#include "snapshot/snapshot.h"
 
 class HelloWorldTest : public testing::Test {
 protected:
@@ -8,5 +7,5 @@ protected:
 };
 
 TEST_F(HelloWorldTest, hello_world_test) {
-    EXPECT_EQ(HelloWorld(), "Hello World");
+    EXPECT_EQ("Hello World", "Hello World");
 }
