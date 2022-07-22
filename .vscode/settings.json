@@ -8,14 +8,14 @@
     "clangd.arguments": [
         "--compile-commands-dir=./build",
         "--background-index",
-        "--header-insertion=iwyu",
+        "--header-insertion=never",
         "--all-scopes-completion",
         "--completion-style=detailed",
         "--cross-file-rename",
         "--enable-config",
         "--pretty",
         "--clang-tidy",
-        "--pch-storage=memory",
+        "--pch-storage=disk",
     ],
     "editor.semanticTokenColorCustomizations": {
         "enabled": true,
