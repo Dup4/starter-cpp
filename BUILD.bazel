@@ -1,0 +1,23 @@
+package(default_visibility = ["//visibility:public"])
+
+common_copts = [
+    "-std=c++17",
+]
+
+cc_library(
+    name = "starter_cpp",
+    hdrs = glob(["include/starter-cpp/**/*.h"]),
+)
+
+cc_binary(
+    name = "benchmark",
+    srcs = glob([
+        "test/*_benchmark.cc",
+    ]),
+    copts = common_copts,
+    deps = [
+        ":starter_cpp",
+        "@google_benchmark//:benchmark",
+        "@google_benchmark//:benchmark_main",
+    ],
+)

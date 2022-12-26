@@ -38,3 +38,6 @@ clean_test:
 	fi
 
 .PHONY: clean clean_test
+
+bazel_bench:
+	bazel run :benchmark --compilation_mode=opt
