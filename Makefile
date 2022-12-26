@@ -41,3 +41,6 @@ clean_test:
 
 bazel_bench:
 	bazel run :benchmark --compilation_mode=opt
+
+bazel_ut:
+	bazel run :unittest --compilation_mode=opt

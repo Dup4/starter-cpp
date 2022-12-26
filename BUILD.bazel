@@ -2,6 +2,11 @@ package(default_visibility = ["//visibility:public"])
 
 common_copts = [
     "-std=c++17",
+    "-O3",
+    "-g",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
 ]
 
 cc_library(
@@ -17,7 +22,18 @@ cc_binary(
     copts = common_copts,
     deps = [
         ":starter_cpp",
-        "@google_benchmark//:benchmark",
         "@google_benchmark//:benchmark_main",
+    ],
+)
+
+cc_test(
+    name = "unittest",
+    srcs = glob([
+        "test/*_test.cc",
+    ]),
+    copts = common_copts,
+    deps = [
+        ":starter_cpp",
+        "@gtest//:gtest_main",
     ],
 )

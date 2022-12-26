@@ -9,5 +9,6 @@ git_repository(
 git_repository(
     name = "gtest",
     branch = "main",
+    build_file = "//:bazel/gtest.BUILD",
     remote = "https://github.com/google/googletest.git",
 )
