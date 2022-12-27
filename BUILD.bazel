@@ -35,5 +35,6 @@ cc_binary(
     deps = [
         ":starter_cpp",
         "@gtest//:gtest_main",
+        "@snapshot",
     ],
 )
