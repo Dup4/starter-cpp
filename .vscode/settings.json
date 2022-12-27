@@ -6,7 +6,7 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "clangd.arguments": [
-        "--compile-commands-dir=./build",
+        "--compile-commands-dir=./",
         "--background-index",
         "--header-insertion=never",
         "--all-scopes-completion",
