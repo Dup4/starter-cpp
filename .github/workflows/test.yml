@@ -26,14 +26,15 @@ jobs:
           - clang
         include:
           - compiler: gcc
-            compiler_version:
-              - 9
-              - 12
+            compiler_version: 9
+          - compiler: gcc
+            compiler_version: 12
           - compiler: clang
-            compiler_version:
-              - 11
-              - 13
-              - 15
+            compiler_version: 11
+          - compiler: clang
+            compiler_version: 13
+          - compiler: clang
+            compiler_version: 15
 
     steps:
       - name: Checkout codebase
