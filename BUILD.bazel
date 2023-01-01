@@ -11,7 +11,28 @@ common_copts = [
 
 cc_library(
     name = "starter_cpp",
-    hdrs = glob(["include/starter-cpp/**/*.h"]),
+    hdrs = glob([
+        "include/starter-cpp/**/*.h",
+    ]),
+    copts = common_copts,
+    includes = [
+        "include",
+    ],
+)
+
+cc_test(
+    name = "unittest",
+    srcs = glob([
+        "test/*_test.cc",
+    ]),
+    copts = common_copts + [
+        "-fno-access-control",
+    ],
+    deps = [
+        ":starter_cpp",
+        "@gtest//:gtest_main",
+        "@snapshot",
+    ],
 )
 
 cc_binary(
@@ -23,18 +44,5 @@ cc_binary(
     deps = [
         ":starter_cpp",
         "@google_benchmark//:benchmark_main",
-    ],
-)
-
-cc_binary(
-    name = "unittest",
-    srcs = glob([
-        "test/*_test.cc",
-    ]),
-    copts = common_copts,
-    deps = [
-        ":starter_cpp",
-        "@gtest//:gtest_main",
-        "@snapshot",
     ],
 )
