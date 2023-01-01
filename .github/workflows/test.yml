@@ -24,18 +24,23 @@ jobs:
         compiler:
           - gcc
           - clang
-        compiler_version: []
-        include:
+        compiler_version:
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+        exclude:
           - compiler: gcc
-            compiler_version: 9
-          - compiler: gcc
-            compiler_version: 12
-          - compiler: clang
-            compiler_version: 11
-          - compiler: clang
             compiler_version: 13
-          - compiler: clang
+          - compiler: gcc
+            compiler_version: 14
+          - compiler: gcc
             compiler_version: 15
+          - compiler: clang
+            compiler_version: 9
 
     steps:
       - name: Checkout codebase
