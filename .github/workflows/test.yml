@@ -24,7 +24,7 @@ jobs:
         compiler:
           - gcc
           - clang
-        compiler_version:
+        compiler_version: []
         include:
           - compiler: gcc
             compiler_version: 9
