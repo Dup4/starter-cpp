@@ -58,7 +58,7 @@ jobs:
         with:
           cmake-version: "latest"
 
-      - name: Install LLVM and Clang
+      - name: Install Clang
         if: matrix.compiler == 'clang'
         uses: KyleMayes/install-llvm-action@v1
         with:
@@ -67,8 +67,8 @@ jobs:
       - name: Set Clang Compiler Env
         if: matrix.compiler == 'clang'
         run: |
-          echo "CC=clang" >> $GITHUB_ENV
-          echo "CXX=clang++" >> $GITHUB_ENV
+          echo "CC=${LLVM_PATH}/bin/clang" >> $GITHUB_ENV
+          echo "CXX=${LLVM_PATH}/bin/clang++" >> $GITHUB_ENV
 
       - name: Install GCC
         if: matrix.compiler == 'gcc'
