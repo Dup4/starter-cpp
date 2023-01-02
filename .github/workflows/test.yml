@@ -109,13 +109,11 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup bazel
-        if: matrix.tool == 'bazel'
         uses: jwlawson/actions-setup-bazel@v1
         with:
           bazel-version: "latest"
 
       - name: Install GCC and lcov
-        if: matrix.compiler == 'gcc' && runner.os == 'ubuntu'
         run: |
           sudo apt-get install -y gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }}
           echo "CC=gcc-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
