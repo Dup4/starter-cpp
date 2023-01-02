@@ -45,6 +45,9 @@ bazel_bench:
 bazel_ut:
 	bazel run :unittest --compilation_mode=opt
 
+bazel_coverage:
+	bazel coverage --test_output=all :unittest
+
 bazel_clean:
 	rm -rf bazel-* external
 

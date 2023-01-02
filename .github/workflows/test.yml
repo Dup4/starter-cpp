@@ -99,6 +99,48 @@ jobs:
           make bazel_ut
           make bazel_bench
 
+  test-coverage:
+    runs-on: ubuntu-latest
+    env:
+      GCC_VERSION: 12
+
+    steps:
+      - name: Checkout codebase
+        uses: actions/checkout@v3
+
+      - name: Setup bazel
+        if: matrix.tool == 'bazel'
+        uses: jwlawson/actions-setup-bazel@v1
+        with:
+          bazel-version: "latest"
+
+      - name: Install GCC and lcov
+        if: matrix.compiler == 'gcc' && runner.os == 'ubuntu'
+        run: |
+          sudo apt-get install -y gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }}
+          echo "CC=gcc-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
+          echo "CXX=g++-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
+          sudo apt-get install -y lcov
+
+      - name: Coverage
+        run: |
+          make bazel_coverage
+          genhtml --output .coverage ./bazel-testlogs/unittest/coverage.dat
+
+      - name: upload coverage artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: |
+            .coverage/
+            ./bazel-testlogs/unittest/coverage.dat
+
+      - name: Upload coverage to CodeCov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./bazel-testlogs/unittest/coverage.dat
+          verbose: true
+
       # - name: GCOVR Analysis
       #   if: contains(matrix.os, 'ubuntu')
       #   run: |

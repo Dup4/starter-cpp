@@ -27,6 +27,9 @@
         "bazel",
         "cmake",
         "codecov",
-        "GCOVR"
+        "GCOVR",
+        "genhtml",
+        "lcov",
+        "testlogs"
     ]
 }
