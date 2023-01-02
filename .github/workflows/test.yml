@@ -70,10 +70,15 @@ jobs:
           echo "CC=${LLVM_PATH}/bin/clang" >> $GITHUB_ENV
           echo "CXX=${LLVM_PATH}/bin/clang++" >> $GITHUB_ENV
 
-      - name: Install GCC
-        if: matrix.compiler == 'gcc'
+      - name: Install GCC For Ubuntu
+        if: matrix.compiler == 'gcc' && matrix.os == 'ubuntu'
         run: |
           sudo apt-get install -y gcc-${{ matrix.compiler_version }} g++-${{ matrix.compiler_version }}
+
+      - name: Install GCC For macOS
+        if: matrix.compiler == 'gcc' && matrix.os == 'macos'
+        run: |
+          sudo brew install -y gcc-${{ matrix.compiler_version }} g++-${{ matrix.compiler_version }}
 
       - name: Set GCC Compiler Env
         if: matrix.compiler == 'gcc'
