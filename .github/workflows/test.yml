@@ -29,12 +29,12 @@ jobs:
           - 10
           - 11
           - 12
-          - 13
+          - 13.0.0
           - 14
           - 15
         exclude:
           - compiler: gcc
-            compiler_version: 13
+            compiler_version: 13.0.0
           - compiler: gcc
             compiler_version: 14
           - compiler: gcc
