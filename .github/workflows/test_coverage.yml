@@ -29,7 +29,7 @@ jobs:
           sudo apt-get install -y gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }}
           echo "CC=gcc-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
           echo "CXX=g++-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
-          sudo apt-get install -y lcov gcov
+          sudo apt-get install -y build-essential lcov
 
       - name: Coverage
         run: |
