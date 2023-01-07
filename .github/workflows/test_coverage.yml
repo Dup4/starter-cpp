@@ -33,6 +33,7 @@ jobs:
             g++-${{ env.GCC_VERSION }}
           echo "CC=gcc-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
           echo "CXX=g++-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
+          gcov -v
 
       - name: Coverage
         run: |
