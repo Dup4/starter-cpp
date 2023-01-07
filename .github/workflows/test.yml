@@ -76,7 +76,7 @@ jobs:
       - name: Install GCC For macOS
         if: matrix.compiler == 'gcc' && runner.os == 'macos'
         run: |
-          brew install gcc@${{ matrix.compiler_version }} g++@${{ matrix.compiler_version }}
+          brew install gcc@${{ matrix.compiler_version }}
 
       - name: Set GCC Compiler Env
         if: matrix.compiler == 'gcc'
