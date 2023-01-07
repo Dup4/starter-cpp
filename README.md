@@ -9,7 +9,7 @@
 
 ## License
 
-[MIT](./LICENSE) License © 2022 [Dup4][dup4]
+[MIT](./LICENSE) License © 2023 [Dup4][dup4]
 
 [dup4]: https://github.com/Dup4
 [clang-format-ci-badge]: https://github.com/Dup4/starter-cpp/workflows/Clang%20Format/badge.svg
