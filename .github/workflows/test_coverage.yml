@@ -54,3 +54,31 @@ jobs:
         with:
           files: coverage.dat
           verbose: true
+
+  test-ubuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up GCC
+        uses: egor-tensin/setup-gcc@v1
+        with:
+          version: 12
+          platform: x64
+
+      - run: |
+          gcc --version
+          g++ --version
+
+  test-macOS:
+    runs-on: macos-latest
+
+    steps:
+      - name: Set up GCC
+        uses: egor-tensin/setup-gcc@v1
+        with:
+          version: 12
+          platform: x64
+
+      - run: |
+          gcc --version
+          g++ --version
