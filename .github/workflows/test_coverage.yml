@@ -29,6 +29,10 @@ jobs:
         with:
           version: ${{ env.GCC_VERSION }}
 
+      - name: Install lcov
+        run: |
+          sudo apt install lcov
+
       - name: Coverage
         run: |
           make bazel_coverage
