@@ -2,9 +2,6 @@
 name: Test Coverage CMake
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
