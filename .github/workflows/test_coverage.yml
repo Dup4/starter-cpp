@@ -33,11 +33,10 @@ jobs:
             g++-${{ env.GCC_VERSION }}
           echo "CC=gcc-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
           echo "CXX=g++-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
-          gcov -v
-          bazel --version
 
       - name: Coverage
         run: |
+          make bazel_ut
           make bazel_coverage
           genhtml --output .coverage ./bazel-testlogs/unittest/coverage.dat
 
