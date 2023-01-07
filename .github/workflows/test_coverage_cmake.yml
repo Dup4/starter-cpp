@@ -32,7 +32,7 @@ jobs:
 
       - name: GCOVR Analysis
         run: |
-          pip install gcovr==5.1
+          pip install gcovr==5.2
           bash -e gcovr.sh
 
       - name: upload coverage artifact
