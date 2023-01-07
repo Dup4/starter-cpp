@@ -26,7 +26,7 @@ jobs:
 
       - name: Install GCC and lcov
         run: |
-          sudo apt-get install -y gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }}
+          sudo apt-get install -y gcc-${{ env.GCC_VERSION }} g++-${{ env.GCC_VERSION }} gcov-${{ env.GCC_VERSION }}
           echo "CC=gcc-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
           echo "CXX=g++-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
           sudo apt-get install -y build-essential lcov
@@ -34,7 +34,7 @@ jobs:
       - name: Coverage
         run: |
           make bazel_coverage
-          # genhtml --output .coverage ./bazel-testlogs/unittest/coverage.dat
+          genhtml --output .coverage ./bazel-testlogs/unittest/coverage.dat
 
       - name: upload coverage artifact
         uses: actions/upload-artifact@v3
