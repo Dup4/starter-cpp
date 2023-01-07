@@ -1,0 +1,49 @@
+# yaml-language-server: $schema=https://json-schema.org/draft-07/schema#
+name: Test Coverage CMake
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-coverage-cmake:
+    runs-on: ubuntu-latest
+    env:
+      CC: clang
+      CXX: clang++
+
+    steps:
+      - name: Checkout codebase
+        uses: actions/checkout@v3
+
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v1
+        with:
+          cmake-version: "latest"
+
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "15.0"
+
+      - name: Coverage
+        run: |
+          make tests
+          make unittest
+
+      - name: GCOVR Analysis
+        if: contains(matrix.os, 'ubuntu')
+        run: |
+          pip install gcovr==5.1
+          bash -e gcovr.sh
+
+      - name: upload coverage artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: .coverage/*
+
+      - name: Upload coverage to CodeCov
+        uses: codecov/codecov-action@v2
+        with:
+          files: .coverage/coverage.xml
+          verbose: true

@@ -54,23 +54,3 @@ jobs:
         with:
           files: coverage.dat
           verbose: true
-
-      # - name: GCOVR Analysis
-      #   if: contains(matrix.os, 'ubuntu')
-      #   run: |
-      #     pip install gcovr==5.1
-      #     bash -e gcovr.sh
-
-      # - name: upload coverage artifact
-      #   if: contains(matrix.os, 'ubuntu')
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: coverage
-      #     path: .coverage
-
-      # - name: Upload coverage to CodeCov
-      #   if: contains(matrix.os, 'ubuntu')
-      #   uses: codecov/codecov-action@v2
-      #   with:
-      #     files: .coverage/coverage.xml
-      #     verbose: true
