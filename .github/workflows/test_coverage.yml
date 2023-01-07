@@ -28,10 +28,9 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y \
+            build-essential lcov \
             gcc-${{ env.GCC_VERSION }} \
             g++-${{ env.GCC_VERSION }} \
-            gcov-${{ env.GCC_VERSION }} \
-            build-essential lcov
           echo "CC=gcc-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
           echo "CXX=g++-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
 
