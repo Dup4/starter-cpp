@@ -54,3 +54,11 @@ jobs:
         with:
           files: coverage.dat
           verbose: true
+
+  test-coverage-macOS:
+    runs-on: macos-latest
+    steps:
+      - run: |
+          brew install gcc@11
+          gcc-11 --version
+          g++-11 --version
