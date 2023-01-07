@@ -28,15 +28,15 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y \
-            build-essential lcov
-            #gcc-${{ env.GCC_VERSION }} \
-            #g++-${{ env.GCC_VERSION }}
-          # echo "CC=gcc-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
-          # echo "CXX=g++-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
+            lcov
+            g++-${{ env.GCC_VERSION }}-multilib \
+            gcc-${{ env.GCC_VERSION }}-multilib \
+          echo "CC=gcc-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
+          echo "CXX=g++-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
+          echo "GCOV=gcov-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
 
       - name: Coverage
         run: |
-          make bazel_ut
           make bazel_coverage
           genhtml --output .coverage ./bazel-testlogs/unittest/coverage.dat
 
