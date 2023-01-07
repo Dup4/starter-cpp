@@ -34,7 +34,7 @@ jobs:
       - name: Coverage
         run: |
           make bazel_coverage
-          genhtml --output .coverage ./bazel-testlogs/unittest/coverage.dat
+          # genhtml --output .coverage ./bazel-testlogs/unittest/coverage.dat
 
       - name: upload coverage artifact
         uses: actions/upload-artifact@v3
