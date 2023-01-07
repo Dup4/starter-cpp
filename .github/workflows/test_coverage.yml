@@ -38,8 +38,8 @@ jobs:
       - name: Coverage
         run: |
           make bazel_coverage
+          make bazel_coverage_genhtml
           cp ./bazel-testlogs/unittest/coverage.dat coverage.dat
-          genhtml --output coverage-html coverage.dat
 
       - name: upload coverage artifact
         uses: actions/upload-artifact@v3

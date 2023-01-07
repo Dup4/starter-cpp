@@ -49,7 +49,7 @@ bazel_coverage:
 	bazel coverage --test_output=all :unittest
 
 bazel_coverage_genhtml:
-	genhtml --output .coverage ./bazel-testlogs/unittest/coverage.dat
+	genhtml --output bazel-coverage-html ./bazel-testlogs/unittest/coverage.dat
 
 bazel_clean:
 	rm -rf bazel-* external
