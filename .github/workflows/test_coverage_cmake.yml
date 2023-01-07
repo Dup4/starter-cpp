@@ -26,7 +26,7 @@ jobs:
       - name: Install LLVM and Clang
         uses: KyleMayes/install-llvm-action@v1
         with:
-          version: "15.0"
+          version: "15"
 
       - name: Coverage
         run: |
@@ -37,7 +37,6 @@ jobs:
         run: |
           python3 -m pip install gcovr==5.2
           gcovr --version
-          gcovr-5.2 --version
           bash -e gcovr.sh
 
       - name: Upload coverage artifact
