@@ -54,3 +54,14 @@ jobs:
         with:
           files: coverage.dat
           verbose: true
+
+  test-macOS:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout codebase
+        uses: actions/checkout@v3
+
+      - name: Install GCC
+        run: |
+          brew install gcc@11
+          gcc-11 --version
