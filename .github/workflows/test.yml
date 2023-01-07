@@ -68,7 +68,7 @@ jobs:
           echo "CXX=${LLVM_PATH}/bin/clang++" >> $GITHUB_ENV
 
       - name: Setup GCC
-      - uses: Dup4/actions-setup-gcc@v1
+        uses: Dup4/actions-setup-gcc@v1
         if: matrix.compiler == 'gcc'
         with:
           version: ${{ matrix.compiler_version }}
