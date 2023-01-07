@@ -35,14 +35,14 @@ jobs:
           pip install gcovr==5.2
           bash -e gcovr.sh
 
-      - name: upload coverage artifact
-        uses: actions/upload-artifact@v2
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v3
         with:
           name: coverage
           path: .coverage/*
 
       - name: Upload coverage to CodeCov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           files: .coverage/coverage.xml
           verbose: true
