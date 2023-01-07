@@ -42,12 +42,12 @@ jobs:
           name: coverage
           path: |
             .coverage/
-            ./bazel-testlogs/unittest/coverage.dat
+            bazel-testlogs/unittest/coverage.dat
 
       - name: Upload coverage to CodeCov
         uses: codecov/codecov-action@v3
         with:
-          files: ./bazel-testlogs/unittest/coverage.dat
+          files: bazel-testlogs/unittest/coverage.dat
           verbose: true
 
       # - name: GCOVR Analysis
