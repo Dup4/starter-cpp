@@ -26,7 +26,6 @@ jobs:
 
       - name: Setup GCC
         uses: Dup4/actions-setup-gcc@v1
-        if: matrix.compiler == 'gcc'
         with:
           version: ${{ env.GCC_VERSION }}
 
