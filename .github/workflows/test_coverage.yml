@@ -28,7 +28,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y \
-            lcov
+            lcov \
             g++-${{ env.GCC_VERSION }}-multilib \
             gcc-${{ env.GCC_VERSION }}-multilib \
           echo "CC=gcc-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
@@ -38,20 +38,21 @@ jobs:
       - name: Coverage
         run: |
           make bazel_coverage
-          genhtml --output .coverage ./bazel-testlogs/unittest/coverage.dat
+          cp ./bazel-testlogs/unittest/coverage.dat coverage.dat
+          genhtml --output coverage-html coverage.dat
 
       - name: upload coverage artifact
         uses: actions/upload-artifact@v3
         with:
           name: coverage
           path: |
-            .coverage/
-            bazel-testlogs/unittest/coverage.dat
+            coverage-html
+            coverage.dat
 
       - name: Upload coverage to CodeCov
         uses: codecov/codecov-action@v3
         with:
-          files: bazel-testlogs/unittest/coverage.dat
+          files: coverage.dat
           verbose: true
 
       # - name: GCOVR Analysis
