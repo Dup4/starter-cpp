@@ -24,16 +24,11 @@ jobs:
         with:
           bazel-version: "latest"
 
-      - name: Install GCC and lcov
-        run: |
-          sudo apt update
-          sudo apt install -y \
-            lcov \
-            g++-${{ env.GCC_VERSION }}-multilib \
-            gcc-${{ env.GCC_VERSION }}-multilib
-          echo "CC=gcc-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
-          echo "CXX=g++-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
-          echo "GCOV=gcov-${{ env.GCC_VERSION }}" >> $GITHUB_ENV
+      - name: Setup GCC
+      - uses: Dup4/actions-setup-gcc@v1
+        if: matrix.compiler == 'gcc'
+        with:
+          version: ${{ env.GCC_VERSION }}
 
       - name: Coverage
         run: |
@@ -54,31 +49,3 @@ jobs:
         with:
           files: coverage.dat
           verbose: true
-
-  test-ubuntu:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Set up GCC
-        uses: egor-tensin/setup-gcc@v1
-        with:
-          version: 12
-          platform: x64
-
-      - run: |
-          gcc --version
-          g++ --version
-
-  test-macOS:
-    runs-on: macos-latest
-
-    steps:
-      - name: Set up GCC
-        uses: egor-tensin/setup-gcc@v1
-        with:
-          version: 12
-          platform: x64
-
-      - run: |
-          gcc --version
-          g++ --version

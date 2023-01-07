@@ -55,7 +55,7 @@ jobs:
         with:
           cmake-version: "latest"
 
-      - name: Install Clang
+      - name: Setup Clang
         if: matrix.compiler == 'clang'
         uses: KyleMayes/install-llvm-action@v1
         with:
@@ -67,22 +67,11 @@ jobs:
           echo "CC=${LLVM_PATH}/bin/clang" >> $GITHUB_ENV
           echo "CXX=${LLVM_PATH}/bin/clang++" >> $GITHUB_ENV
 
-      - name: Install GCC For Ubuntu
-        if: matrix.compiler == 'gcc' && runner.os == 'ubuntu'
-        run: |
-          sudo apt update
-          sudo apt install -y gcc-${{ matrix.compiler_version }} g++-${{ matrix.compiler_version }}
-
-      - name: Install GCC For macOS
-        if: matrix.compiler == 'gcc' && runner.os == 'macos'
-        run: |
-          brew install gcc@${{ matrix.compiler_version }}
-
-      - name: Set GCC Compiler Env
+      - name: Setup GCC
+      - uses: Dup4/actions-setup-gcc@v1
         if: matrix.compiler == 'gcc'
-        run: |
-          echo "CC=gcc-${{ matrix.compiler_version }}" >> $GITHUB_ENV
-          echo "CXX=g++-${{ matrix.compiler_version }}" >> $GITHUB_ENV
+        with:
+          version: ${{ matrix.compiler_version }}
 
       - name: Build And Test Use Cmake
         if: matrix.tool == 'cmake'
