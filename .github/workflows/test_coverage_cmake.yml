@@ -2,6 +2,9 @@
 name: Test Coverage CMake
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -32,7 +35,9 @@ jobs:
 
       - name: GCOVR Analysis
         run: |
-          pip install gcovr==5.2
+          python3 -m pip install gcovr==5.2
+          gcovr --version
+          gcovr-5.2 --version
           bash -e gcovr.sh
 
       - name: Upload coverage artifact
