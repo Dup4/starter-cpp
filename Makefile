@@ -1,22 +1,11 @@
-all:
-	cmake -S. -Bbuild \
-	-DCMAKE_BUILD_TYPE=Release \
-	-DBENCHMARK_ENABLE_TESTING=OFF \
-	-DCMAKE_EXPORT_COMPILE_COMMANDS=1
-	cmake --build build -j
-
-debug:
-	cmake -S. -Bbuild \
-	-DCMAKE_BUILD_TYPE=Debug \
-	-DCMAKE_EXPORT_COMPILE_COMMANDS=1
-	cmake --build build -j
-
 tests: clean_test build_tests
 unittest: clean_test run_unittest
 benchmark: clean_test run_benchmark
 
 build_tests:
-	cmake -S. -Bbuild \
+	cmake \
+	-S. \
+	-Bbuild \
 	-DCMAKE_BUILD_TYPE=Release \
 	-DBENCHMARK_ENABLE_TESTING=OFF \
 	-DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
