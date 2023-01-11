@@ -26,13 +26,11 @@ clean_test:
 		find ./build/test -name "*.gcda" -print0 | xargs -0 rm -f; \
 	fi
 
-.PHONY: clean clean_test
+bazel_ut:
+	bazel run :unittest --compilation_mode=opt
 
 bazel_bench:
 	bazel run :benchmark --compilation_mode=opt
-
-bazel_ut:
-	bazel run :unittest --compilation_mode=opt
 
 bazel_coverage:
 	bazel coverage --test_output=all :unittest
@@ -45,3 +43,5 @@ bazel_clean:
 
 bazel_refresh_all:
 	bazel run @bazel_compile_commands_extractor//:refresh_all
+
+.PHONY: clean clean_test bazel_clean
