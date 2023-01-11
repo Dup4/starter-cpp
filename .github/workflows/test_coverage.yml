@@ -40,7 +40,7 @@ jobs:
         with:
           name: coverage
           path: |
-            coverage-html
+            bazel-coverage-html
             coverage.dat
 
       - name: Upload coverage to CodeCov
