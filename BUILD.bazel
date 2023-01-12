@@ -10,9 +10,9 @@ common_copts = [
 ]
 
 cc_library(
-    name = "starter_cpp",
+    name = "starter-cpp",
     hdrs = glob([
-        "include/starter-cpp/**/*.h",
+        "include/starter-cpp/*.h",
     ]),
     copts = common_copts,
     includes = [
@@ -29,7 +29,7 @@ cc_test(
         "-fno-access-control",
     ],
     deps = [
-        ":starter_cpp",
+        ":starter-cpp",
         "@gtest//:gtest_main",
         "@snapshot",
     ],
@@ -42,7 +42,7 @@ cc_binary(
     ]),
     copts = common_copts,
     deps = [
-        ":starter_cpp",
+        ":starter-cpp",
         "@google_benchmark//:benchmark_main",
     ],
 )
