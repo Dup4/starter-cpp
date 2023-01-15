@@ -27,6 +27,7 @@
         "bazel",
         "cmake",
         "codecov",
+        "codeql",
         "gcov",
         "GCOVR",
         "genhtml",
