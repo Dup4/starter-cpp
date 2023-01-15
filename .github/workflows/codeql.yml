@@ -8,6 +8,10 @@ on:
   schedule:
     - cron: "30 1 * * 0"
 
+env:
+  language: cpp
+  llvm_version: 15
+
 jobs:
   CodeQL:
     runs-on: ubuntu-latest
@@ -21,7 +25,7 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
-          languages: cpp
+          languages: ${{ env.language }}
 
       - name: Setup bazel
         uses: jwlawson/actions-setup-bazel@v1
@@ -31,28 +35,14 @@ jobs:
       - name: Setup Clang
         uses: KyleMayes/install-llvm-action@v1
         with:
-          version: 15
+          version: ${{ env.llvm_version }}
 
       - name: Build And Test Use Bazel
         run: |
           make bazel_ut
           make bazel_bench
 
-      # - name: Autobuild
-      #   uses: github/codeql-action/autobuild@v2
-
-      # ℹ️ Command-line programs to run using the OS shell.
-      # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
-
-      # ✏️ If the Autobuild fails above, remove it and uncomment the following
-      #    three lines and modify them (or add more) to build your code if your
-      #    project uses a compiled language
-
-      #- run: |
-      #     make bootstrap
-      #     make release
-
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
         with:
-          category: "/language:cpp"
+          category: "/language:${{ env.language }}"
