@@ -23,8 +23,23 @@ jobs:
         with:
           languages: cpp
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v2
+      - name: Setup bazel
+        uses: jwlawson/actions-setup-bazel@v1
+        with:
+          bazel-version: "latest"
+
+      - name: Setup Clang
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: 15
+
+      - name: Build And Test Use Bazel
+        run: |
+          make bazel_ut
+          make bazel_bench
+
+      # - name: Autobuild
+      #   uses: github/codeql-action/autobuild@v2
 
       # ℹ️ Command-line programs to run using the OS shell.
       # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
@@ -39,3 +54,5 @@ jobs:
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:cpp"
