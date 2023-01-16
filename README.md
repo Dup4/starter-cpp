@@ -7,6 +7,22 @@
 [![codecov][codecov-badge]][codecov]
 [![GitHub release][gh-release-badge]][gh-release]
 
+## Usage
+
+```bash
+degit Dup4/starter-cpp ${your repo name}
+cd ${your repo name}
+```
+
+## Feature
+
+* support cmake and bazel.
+* Test Coverage.
+* Test CI with matrix strategy.
+* clang format check ci.
+* release ci.
+* codeql ci.
+
 ## License
 
 [MIT](./LICENSE) License © 2023 [Dup4][dup4]
