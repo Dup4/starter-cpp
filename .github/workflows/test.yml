@@ -56,12 +56,7 @@ jobs:
         uses: KyleMayes/install-llvm-action@v1
         with:
           version: ${{ matrix.compiler_version }}
-
-      - name: Set Clang Compiler Env
-        if: matrix.compiler == 'clang'
-        run: |
-          echo "CC=${LLVM_PATH}/bin/clang" >> $GITHUB_ENV
-          echo "CXX=${LLVM_PATH}/bin/clang++" >> $GITHUB_ENV
+          env: true
 
       - name: Setup GCC
         uses: Dup4/actions-setup-gcc@v1
