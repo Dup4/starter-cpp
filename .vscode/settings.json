@@ -28,6 +28,7 @@
         "cmake",
         "codecov",
         "codeql",
+        "degit",
         "gcov",
         "GCOVR",
         "genhtml",
